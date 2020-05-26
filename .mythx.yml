@@ -2,9 +2,8 @@ analyze:
     async: true
     create-group: true
     solc: 0.5.16
+    check-properties: true
     remappings:
     targets:
-        - contracts/UniswapV2ERC20.sol:UniswapV2ERC20
-        - contracts/UniswapV2Factory.sol:UniswapV2Factory
-        - contracts/UniswapV2Pair.sol:UniswapV2Pair
+        - contracts/VerifyUniswapV2Pair.sol:VerifyUniswapV2Pair
         - contracts/VerifyUniswapV2ERC20.sol:VerifyUniswapV2ERC20
