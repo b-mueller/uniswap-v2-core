@@ -24,30 +24,30 @@ contract VerifyUniswapV2Pair is UniswapV2Pair, MythXVerificationHelper {
 
     }
 
-    function initialize(address _token0, address _token1) public {
+    function initialize(address _token0, address _token1) public _mythx_wrapped_function() {
         super.initialize(_token0, _token1);
     }
 
-    function mint(address to) public returns (uint liquidity) {
+    function mint(address to) public _mythx_wrapped_function() returns (uint liquidity) {
         super.mint(to);
     }
 
-    function burn(address to) public returns (uint amount0, uint amount1) {
+    function burn(address to) public  _mythx_wrapped_function() returns (uint amount0, uint amount1) {
         super.burn(to);
     }
 
     // this low-level function should be called from a contract which performs important safety checks
-    function swap(uint amount0Out, uint amount1Out, address to, bytes memory data) public {
+    function swap(uint amount0Out, uint amount1Out, address to, bytes memory data) public   _mythx_wrapped_function() {
         super.swap(amount0Out, amount1Out, to, data);
     }
 
     // force balances to match reserves
-    function skim(address to) public {
+    function skim(address to) public   _mythx_wrapped_function() {
         super.skim(to);
     }
 
     // force reserves to match balances
-    function sync() public {
+    function sync() public _mythx_wrapped_function() {
         super.sync();
     }
 }
