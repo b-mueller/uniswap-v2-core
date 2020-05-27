@@ -41,11 +41,11 @@ contract MythXVerificationHelper {
     }
 
     function _mythx_startCall() internal {
-        (callDepth++); //mythx-silence-overflow
+        (callDepth++); // mythx-disable-line SWC-101
     }
 
     function _mythx_endCall() internal {
-        (callDepth--); //mythx-silence-underflow
+        (callDepth--); // mythx-disable-line SWC-101
     }
 
     function _mythx_isOuterCall() internal view returns (bool) {
