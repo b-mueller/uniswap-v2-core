@@ -30,8 +30,6 @@ contract VerifyUniswapV2Pair is UniswapV2Pair, MythXVerificationHelper {
             emit AssertionFailed("[P3] totalSupply must be either zero or greater than minimum liquidity");
          }
 
-
-
     }
 
     function initialize(address _token0, address _token1) public _mythx_wrapped_function() {
