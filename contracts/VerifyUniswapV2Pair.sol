@@ -5,22 +5,32 @@ import './MythXVerificationHelper.sol';
 
 contract VerifyUniswapV2Pair is UniswapV2Pair, MythXVerificationHelper {
 
+    uint256 private ___mythx_var_prevs_reserve0;
+    uint256 private ___mythx_var_prevs_reserve1;
+
     function _mythx_init() internal {
     }
 
     function _mythx_ContractInvariant_snapshot() internal {
+        ___mythx_var_prevs_reserve0 = reserve0;
+        ___mythx_var_prevs_reserve1 = reserve1;
     }
 
     function _mythx_ContractInvariant_check() internal {
 
-         if (!(unlocked == 1)) {
-            emit AssertionFailed("[P1] All functions should revert if unlocked == 0.");             
-             
+        if (!((reserve0 == ___mythx_var_prevs_reserve0 && reserve1 == ___mythx_var_prevs_reserve1)) || unlocked == 1) {
+            emit AssertionFailed("[P1] Reserves must remain constant unless the contract is unlocked.");
+        }
+
+         if (!(reserve0 <= uint112(-1) && reserve0 <= uint112(-1))) {
+             emit AssertionFailed("[P2] The value in reserves must be lower than the maximum 112 bit unsigned integer.");            
          }
 
          if (!(totalSupply == 0 || totalSupply >= MINIMUM_LIQUIDITY)) {
-            emit AssertionFailed("[P1] If totalSupply > 0 it must be equal toor greater than minimum liquidity");
+            emit AssertionFailed("[P3] totalSupply must be either zero or greater than minimum liquidity");
          }
+
+
 
     }
 
@@ -42,7 +52,7 @@ contract VerifyUniswapV2Pair is UniswapV2Pair, MythXVerificationHelper {
     }
 
     // force balances to match reserves
-    function skim(address to) public   _mythx_wrapped_function() {
+    function skim(address to) public _mythx_wrapped_function() {
         super.skim(to);
     }
 

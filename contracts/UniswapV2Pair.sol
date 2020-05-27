@@ -19,9 +19,9 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
     address public token0;
     address public token1;
 
-    uint112 private reserve0;           // uses single storage slot, accessible via getReserves
-    uint112 private reserve1;           // uses single storage slot, accessible via getReserves
-    uint32  private blockTimestampLast; // uses single storage slot, accessible via getReserves
+    uint112 public reserve0;           // uses single storage slot, accessible via getReserves
+    uint112 public reserve1;           // uses single storage slot, accessible via getReserves
+    uint32  public blockTimestampLast; // uses single storage slot, accessible via getReserves
 
     uint public price0CumulativeLast;
     uint public price1CumulativeLast;
