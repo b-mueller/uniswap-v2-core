@@ -1,5 +1,5 @@
 analyze:
-    async: false
+    async: true
     create-group: true
     solc: 0.5.16
     remappings:
