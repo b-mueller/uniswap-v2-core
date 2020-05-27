@@ -7,4 +7,3 @@ analyze:
         - contracts/UniswapV2ERC20.sol:UniswapV2ERC20
         - contracts/UniswapV2Factory.sol:UniswapV2Factory
         - contracts/UniswapV2Pair.sol:UniswapV2Pair
-        - contracts/VerifyUniswapV2ERC20.sol:VerifyUniswapV2ERC20
